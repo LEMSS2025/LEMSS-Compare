@@ -48,16 +48,6 @@ def main() -> None:
 
     st.markdown(
         """
-        <hr>
-        <p style='text-align: center; font-size: 14px;'>
-            Developed by Technion DDS Information Retrieval Lab. For citation, use: <em>LEMSS, 2024</em>.
-        </p>
-        """,
-        unsafe_allow_html=True,
-    )
-
-    st.markdown(
-        """
         <style>
         @media screen and (max-width: 768px) {
             iframe[title="streamlit_echarts.st_echarts"] { height: 400px; }
