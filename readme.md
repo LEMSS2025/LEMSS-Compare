@@ -228,10 +228,10 @@
 
 <h4>From <code>source</code></h4>
 
-> 1. Clone the LEMSS Comapre repository:
+> 1. Clone the LEMSS Compare repository:
 >
 > ```console
-> $ git clone ../LEMSS-Comapre
+> $ git clone ../LEMSS-Compare
 > ```
 >
 > 2. Change to the project directory:
@@ -252,7 +252,7 @@
 ###  Usage
 > 1. Update experiment_folders in main.py with the paths to the experiment folders you want to compare and the name of the experiments.
 >
-> 2. Run LEMSS Comapre using the command below:
+> 2. Run LEMSS Compare using the command below:
 > ```console
 > $ python main.py
 > ```
@@ -274,9 +274,9 @@
 
 Contributions are welcome! Here are several ways you can contribute:
 
-- **[Report Issues](https://github.com/LEMSS2025/LEMSS-Comapre/issues)**: Submit bugs found or log feature requests for the `LEMSS Comapre` project.
-- **[Submit Pull Requests](https://github.com/LEMSS2025/LEMSS-Comapre/pulls)**: Review open PRs, and submit your own PRs.
-- **[Join the Discussions](https://github.com/LEMSS2025/LEMSS-Comapre/discussions)**: Share your insights, provide feedback, or ask questions.
+- **[Report Issues](https://github.com/LEMSS2025/LEMSS-Compare/issues)**: Submit bugs found or log feature requests for the `LEMSS Compare` project.
+- **[Submit Pull Requests](https://github.com/LEMSS2025/LEMSS-Compare/pulls)**: Review open PRs, and submit your own PRs.
+- **[Join the Discussions](https://github.com/LEMSS2025/LEMSS-Compare/discussions)**: Share your insights, provide feedback, or ask questions.
 
 <details closed>
 <summary>Contributing Guidelines</summary>
@@ -284,7 +284,7 @@ Contributions are welcome! Here are several ways you can contribute:
 1. **Fork the Repository**: Start by forking the project repository to your local account.
 2. **Clone Locally**: Clone the forked repository to your local machine using a git client.
    ```sh
-   git clone ../LEMSS-Comapre
+   git clone ../LEMSS-Compare
    ```
 3. **Create a New Branch**: Always work on a new branch, giving it a descriptive name.
    ```sh
