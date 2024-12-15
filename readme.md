@@ -112,6 +112,7 @@
     │   │   │   └── transition_probabilities_analysis.txt
     │   │   └── final_report_table.csv
     ├── .gitignore
+    ├── app.py
     ├── experiment_comparison.py
     ├── graphs_compare.py
     ├── main.py
@@ -155,6 +156,14 @@
 | File                                        | Summary                         |
 |---------------------------------------------| ---                             |
 | [exp1-exp2](output/exp1-exp2/)              | Contains comparison data between two experiments, including graphs, ranks, and final reports. |
+
+</details>
+
+<details closed><summary>app.py</summary>
+
+| File                                        | Summary                         |
+|---------------------------------------------| ---                             |
+| [app.py](app.py)                            | Streamlit web application for interactive data exploration and visualization of comparison results. |
 
 </details>
 
@@ -293,4 +302,3 @@ Contributions are welcome! Here are several ways you can contribute:
 7. **Submit a Pull Request**: Create a PR against the original project repository. Clearly describe the changes and their motivations.
 8. **Review**: Once your PR is reviewed and approved, it will be merged into the main branch. Congratulations on your contribution!
 </details>
----
