@@ -42,7 +42,7 @@ GRAPH_LEFT_MARGIN = 0.18
 CONFIDENCE_INTERVAL = 1.96
 
 ROUND_X_LABEL = "Round"
-ROUNDS_INCLUDED_X_LABEL = "Rounds Included"
+ROUNDS_INCLUDED_X_LABEL = "Round"
 
 FIRST_SECOND_SIMILARITY_OVER_TIME_FILE_NAME = "first_second_similarity_over_time.png"
 RANK_DIAMETER_AND_AVERAGE_OVER_TIME_FILE_NAME = "rank_diameter_and_average_over_time.png"

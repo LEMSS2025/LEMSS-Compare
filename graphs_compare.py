@@ -100,7 +100,11 @@ class GraphsCompare:
 
         plt.xlabel(xlabel, fontsize=LABEL_FONT_SIZE)
         plt.ylabel(ylabel, fontsize=LABEL_FONT_SIZE)
-        plt.title(title, fontsize=TITLE_FONT_SIZE)
+
+        title_path = save_path.replace(".png", "_title.txt")
+        with open(title_path, 'w') as f:
+            f.write(title)
+
         plt.subplots_adjust(left=GRAPH_LEFT_MARGIN)
         plt.grid(True)
         plt.savefig(save_path)
