@@ -1,4 +1,4 @@
-from typing import List, Dict
+from typing import Dict
 import os
 
 import numpy as np
@@ -6,13 +6,16 @@ import pandas as pd
 
 from constants.constants import (OUTPUTS_DIR, REPORT_TABLE_COMPARISON_FILE_NAME, EMBEDDINGS_GRAPHS_FOLDER,
                                  REPORT_TABLE_INPUT_CSV_FILE_NAME, AVERAGE_AND_DIAMETER_OF_PLAYER_DOCUMENTS_CSV_FILE_NAME,
-                                 AVERAGE_OF_PLAYER_DOCUMENTS_CONSECUTIVE_ROUNDS_CSV_FILE_NAME, RANK_DIAMETER_AND_AVERAGE_LAST_ROUND_FILE_NAME,
+                                 AVERAGE_OF_PLAYER_DOCUMENTS_CONSECUTIVE_ROUNDS_CSV_FILE_NAME,
+                                 RANK_DIAMETER_AND_AVERAGE_LAST_ROUND_FILE_NAME,
                                  FINAL_TABLE_EXPERIMENT_COLUMN, FINAL_TABLE_BEST_AGENT_COLUMN,
-                                 FINAL_TABLE_WINNING_HOMOGENEITY_COLUMN, FINAL_TABLE_AVERAGE_AND_DIAMETER_OF_PLAYER_DOCUMENTS_MEAN_COLUMN,
+                                 FINAL_TABLE_WINNING_HOMOGENEITY_COLUMN,
+                                 FINAL_TABLE_AVERAGE_AND_DIAMETER_OF_PLAYER_DOCUMENTS_MEAN_COLUMN,
                                  FINAL_TABLE_AVERAGE_AND_DIAMETER_OF_PLAYER_DOCUMENTS_MIN_COLUMN,
                                  FINAL_TABLE_AVERAGE_OF_PLAYER_DOCUMENTS_CONSECUTIVE_ROUNDS_MEAN_COLUMN,
                                  FINAL_TABLE_RANK_DIAMETER_AND_AVERAGE_LAST_ROUND_MEAN_COLUMN,
                                  FINAL_TABLE_RANK_DIAMETER_AND_AVERAGE_LAST_ROUND_MIN_COLUMN)
+
 
 class ReportTableComparison:
     def __init__(self, experiment_folders: Dict[str, str]):
@@ -41,7 +44,7 @@ class ReportTableComparison:
             avg_diameter_player_docs_path = os.path.join(experiment_folder, EMBEDDINGS_GRAPHS_FOLDER,
                                                          AVERAGE_AND_DIAMETER_OF_PLAYER_DOCUMENTS_CSV_FILE_NAME)
             avg_diameter_player_consecutive_rounds_path = os.path.join(experiment_folder, EMBEDDINGS_GRAPHS_FOLDER,
-                                                                       AVERAGE_OF_PLAYER_DOCUMENTS_CONSECUTIVE_ROUNDS_CSV_FILE_NAME)
+                                                        AVERAGE_OF_PLAYER_DOCUMENTS_CONSECUTIVE_ROUNDS_CSV_FILE_NAME)
             rank_diameter_avg_path = os.path.join(experiment_folder, EMBEDDINGS_GRAPHS_FOLDER,
                                                   RANK_DIAMETER_AND_AVERAGE_LAST_ROUND_FILE_NAME)
 
@@ -57,23 +60,36 @@ class ReportTableComparison:
 
     def compare_report_tables(self):
         final_report_table = pd.DataFrame()
-        for experiment_name, report_table_df, avg_diameter_player_docs_df, avg_diameter_player_consecutive_rounds_df, rank_diameter_avg_df \
+        for (experiment_name, report_table_df, avg_diameter_player_docs_df, avg_diameter_player_consecutive_rounds_df,
+             rank_diameter_avg_df) \
                 in zip(self.__experiment_folders.keys(), self.report_table_dfs, self.avg_diameter_player_docs_dfs,
                        self.avg_diameter_player_consecutive_rounds_dfs, self.rank_diameter_avg_dfs):
 
             report_table_df[FINAL_TABLE_EXPERIMENT_COLUMN] = experiment_name
             report_table_df = report_table_df.set_index(FINAL_TABLE_EXPERIMENT_COLUMN)
 
-            report_table_df[FINAL_TABLE_BEST_AGENT_COLUMN] = report_table_df[FINAL_TABLE_BEST_AGENT_COLUMN].astype(str).iloc[0]
-            report_table_df[FINAL_TABLE_WINNING_HOMOGENEITY_COLUMN] = report_table_df[FINAL_TABLE_WINNING_HOMOGENEITY_COLUMN].astype(np.float32).iloc[0]
+            report_table_df[FINAL_TABLE_BEST_AGENT_COLUMN] = (
+                report_table_df[FINAL_TABLE_BEST_AGENT_COLUMN].astype(str).iloc)[0]
+            report_table_df[FINAL_TABLE_WINNING_HOMOGENEITY_COLUMN] = (
+                report_table_df[FINAL_TABLE_WINNING_HOMOGENEITY_COLUMN].astype(np.float32).iloc)[0]
 
-            report_table_df[FINAL_TABLE_AVERAGE_AND_DIAMETER_OF_PLAYER_DOCUMENTS_MEAN_COLUMN] = avg_diameter_player_docs_df[FINAL_TABLE_AVERAGE_AND_DIAMETER_OF_PLAYER_DOCUMENTS_MEAN_COLUMN].astype(np.float32).iloc[0]
-            report_table_df[FINAL_TABLE_AVERAGE_AND_DIAMETER_OF_PLAYER_DOCUMENTS_MIN_COLUMN] = avg_diameter_player_docs_df[FINAL_TABLE_AVERAGE_AND_DIAMETER_OF_PLAYER_DOCUMENTS_MIN_COLUMN].astype(np.float32).iloc[0]
+            report_table_df[FINAL_TABLE_AVERAGE_AND_DIAMETER_OF_PLAYER_DOCUMENTS_MEAN_COLUMN] = (
+                avg_diameter_player_docs_df[FINAL_TABLE_AVERAGE_AND_DIAMETER_OF_PLAYER_DOCUMENTS_MEAN_COLUMN]
+                .astype(np.float32).iloc)[0]
+            report_table_df[FINAL_TABLE_AVERAGE_AND_DIAMETER_OF_PLAYER_DOCUMENTS_MIN_COLUMN] = (
+                avg_diameter_player_docs_df[FINAL_TABLE_AVERAGE_AND_DIAMETER_OF_PLAYER_DOCUMENTS_MIN_COLUMN]
+                .astype(np.float32).iloc)[0]
 
-            report_table_df[FINAL_TABLE_AVERAGE_OF_PLAYER_DOCUMENTS_CONSECUTIVE_ROUNDS_MEAN_COLUMN] = avg_diameter_player_consecutive_rounds_df[FINAL_TABLE_AVERAGE_OF_PLAYER_DOCUMENTS_CONSECUTIVE_ROUNDS_MEAN_COLUMN].astype(np.float32).iloc[0]
+            report_table_df[FINAL_TABLE_AVERAGE_OF_PLAYER_DOCUMENTS_CONSECUTIVE_ROUNDS_MEAN_COLUMN] = (
+                avg_diameter_player_consecutive_rounds_df[FINAL_TABLE_AVERAGE_OF_PLAYER_DOCUMENTS_CONSECUTIVE_ROUNDS_MEAN_COLUMN]
+                .astype(np.float32).iloc)[0]
 
-            report_table_df[FINAL_TABLE_RANK_DIAMETER_AND_AVERAGE_LAST_ROUND_MEAN_COLUMN] = rank_diameter_avg_df[FINAL_TABLE_RANK_DIAMETER_AND_AVERAGE_LAST_ROUND_MEAN_COLUMN].astype(np.float32).iloc[0]
-            report_table_df[FINAL_TABLE_RANK_DIAMETER_AND_AVERAGE_LAST_ROUND_MIN_COLUMN] = rank_diameter_avg_df[FINAL_TABLE_RANK_DIAMETER_AND_AVERAGE_LAST_ROUND_MIN_COLUMN].astype(np.float32).iloc[0]
+            report_table_df[FINAL_TABLE_RANK_DIAMETER_AND_AVERAGE_LAST_ROUND_MEAN_COLUMN] = (
+                rank_diameter_avg_df[FINAL_TABLE_RANK_DIAMETER_AND_AVERAGE_LAST_ROUND_MEAN_COLUMN]
+                .astype(np.float32).iloc)[0]
+            report_table_df[FINAL_TABLE_RANK_DIAMETER_AND_AVERAGE_LAST_ROUND_MIN_COLUMN] = (
+                rank_diameter_avg_df[FINAL_TABLE_RANK_DIAMETER_AND_AVERAGE_LAST_ROUND_MIN_COLUMN]
+                .astype(np.float32).iloc)[0]
 
             final_report_table = pd.concat([final_report_table, report_table_df])
 

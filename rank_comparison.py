@@ -1,10 +1,12 @@
 import os
+from typing import Dict
+
 import pandas as pd
 import numpy as np
-from typing import List, Dict
+
 from constants.constants import (RANKS_COMPARISON_FOLDER_NAME, OUTPUTS_DIR, COMPETITION_HISTORY_PILOT_FILE_NAME,
-                                 USER_QUERY_COLUMN, RANK_CHANGE_ANALYSIS_FILE_NAME, TRANSITION_PROBABILITIES_ANALYSIS_FILE_NAME,
-                                 SPERATION_LINE)
+                                 USER_QUERY_COLUMN, RANK_CHANGE_ANALYSIS_FILE_NAME,
+                                 TRANSITION_PROBABILITIES_ANALYSIS_FILE_NAME)
 
 
 class RankComparison:
@@ -48,7 +50,8 @@ class RankComparison:
         """
         for experiment, data in self.__experiment_data.items():
             analysis_df = self.__analyze_rank_changes(data, experiment)
-            output_path = os.path.join(self.output_dir, f"{self.__experiments[experiment]}_{RANK_CHANGE_ANALYSIS_FILE_NAME}")
+            output_path = os.path.join(self.output_dir, f"{self.__experiments[experiment]}"
+                                                        f"_{RANK_CHANGE_ANALYSIS_FILE_NAME}")
             analysis_df.to_csv(output_path, index=False)
 
     def __compare_transition_probabilities(self):
@@ -57,7 +60,8 @@ class RankComparison:
         """
         for experiment, data in self.__experiment_data.items():
             analysis_df = self.__analyze_transition_probabilities(data)
-            output_path = os.path.join(self.output_dir, f"{self.__experiments[experiment]}_{TRANSITION_PROBABILITIES_ANALYSIS_FILE_NAME}")
+            output_path = os.path.join(self.output_dir, f"{self.__experiments[experiment]}"
+                                                        f"_{TRANSITION_PROBABILITIES_ANALYSIS_FILE_NAME}")
             analysis_df.to_csv(output_path, index=False)
 
     def __analyze_rank_changes(self, df: pd.DataFrame, experiment_name: str = None) -> pd.DataFrame:
@@ -101,7 +105,8 @@ class RankComparison:
 
         return analysis_df
 
-    def __calculate_transition_probabilities(self, df: pd.DataFrame, current_rank: int, max_rank: int, num_rounds: int, step: int = 1) -> np.ndarray:
+    def __calculate_transition_probabilities(self, df: pd.DataFrame, current_rank: int, max_rank: int, num_rounds: int,
+                                             step: int = 1) -> np.ndarray:
         """
         Calculates transition probabilities for a specific rank across rounds.
 

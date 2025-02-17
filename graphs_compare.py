@@ -1,11 +1,11 @@
 import os
-import numpy as np
-import matplotlib.pyplot as plt
 from typing import Dict, List
 from glob import glob
 from pathlib import Path
 import json
 
+import numpy as np
+import matplotlib.pyplot as plt
 
 from constants.constants import (OUTPUTS_DIR, NUM_TO_STR, GRAPH_COMPARISON_FOLDER_NAME, EMBEDDINGS_GRAPHS_FOLDER,
     MEAN_METRIC, MIN_METRIC, FIGURE_SIZE, LABEL_FONT_SIZE, TITLE_FONT_SIZE, GRAPH_LEFT_MARGIN,CONFIDENCE_INTERVAL,
@@ -15,13 +15,18 @@ from constants.constants import (OUTPUTS_DIR, NUM_TO_STR, GRAPH_COMPARISON_FOLDE
     SETTING_PLOT_DIAMETER_AND_AVERAGE_OVER_TIME,
     ROUND_X_LABEL, ROUNDS_INCLUDED_X_LABEL,
     FIRST_SECOND_SIMILARITY_OVER_TIME_FILE_NAME, RANK_DIAMETER_AND_AVERAGE_OVER_TIME_FILE_NAME,
-    Y_LABEL_CONSECUTIVE_WINNER_SIMILARITY_OVER_TIME, TITLE_CONSECUTIVE_WINNER_SIMILARITY_OVER_TIME, CONSECUTIVE_WINNER_SIMILARITY_OVER_TIME_FILE_NAME,
+    Y_LABEL_CONSECUTIVE_WINNER_SIMILARITY_OVER_TIME, TITLE_CONSECUTIVE_WINNER_SIMILARITY_OVER_TIME,
+    CONSECUTIVE_WINNER_SIMILARITY_OVER_TIME_FILE_NAME,
     Y_LABEL_AVERAGE_UNIQUE_DOCUMENTS, TITLE_LABEL_AVERAGE_UNIQUE_DOCUMENTS, AVERAGE_UNIQUE_DOCUMENTS_FILE_NAME,
     Y_LABEL_MEAN_AVERAGE_AND_DIAMETER_OF_PLAYER_DOCUMENTS, TITLE_LABEL_MEAN_AVERAGE_AND_DIAMETER_OF_PLAYER_DOCUMENTS,
-    Y_LABEL_MIN_AVERAGE_AND_DIAMETER_OF_PLAYER_DOCUMENTS, TITLE_LABEL_MIN_AVERAGE_AND_DIAMETER_OF_PLAYER_DOCUMENTS, AVERAGE_AND_DIAMETER_OF_PLAYER_DOCUMENTS_FILE_NAME,
-    Y_LABEL_AVERAGE_SIMILARITY_OF_PLAYER_DOCUMENTS_CONSECUTIVE_ROUNDS, TITLE_LABEL_AVERAGE_SIMILARITY_OF_PLAYER_DOCUMENTS_CONSECUTIVE_ROUNDS, AVERAGE_SIMILARITY_OF_PLAYER_DOCUMENTS_CONSECUTIVE_ROUND_FILE_NAME,
+    Y_LABEL_MIN_AVERAGE_AND_DIAMETER_OF_PLAYER_DOCUMENTS, TITLE_LABEL_MIN_AVERAGE_AND_DIAMETER_OF_PLAYER_DOCUMENTS,
+    AVERAGE_AND_DIAMETER_OF_PLAYER_DOCUMENTS_FILE_NAME,
+    Y_LABEL_AVERAGE_SIMILARITY_OF_PLAYER_DOCUMENTS_CONSECUTIVE_ROUNDS,
+    TITLE_LABEL_AVERAGE_SIMILARITY_OF_PLAYER_DOCUMENTS_CONSECUTIVE_ROUNDS,
+    AVERAGE_SIMILARITY_OF_PLAYER_DOCUMENTS_CONSECUTIVE_ROUND_FILE_NAME,
     Y_LABEL_MEAN_DIAMETER_AND_AVERAGE_OVER_TIME, TITLE_LABEL_MEAN_DIAMETER_AND_AVERAGE_OVER_TIME,
-    Y_LABEL_MIN_DIAMETER_AND_AVERAGE_OVER_TIME, TITLE_LABEL_MIN_DIAMETER_AND_AVERAGE_OVER_TIME, DIAMETER_AND_AVERAGE_OVER_TIME)
+    Y_LABEL_MIN_DIAMETER_AND_AVERAGE_OVER_TIME, TITLE_LABEL_MIN_DIAMETER_AND_AVERAGE_OVER_TIME,
+    DIAMETER_AND_AVERAGE_OVER_TIME)
 
 
 class GraphsCompare:
@@ -179,8 +184,8 @@ class GraphsCompare:
             "series": series
         }
 
-        option["yAxis"]["min"] = y_axis_min
-        option["yAxis"]["max"] = y_axis_max
+        option["yAxis"]["min"] = round(y_axis_min, 2)
+        option["yAxis"]["max"] = round(y_axis_max, 2)
 
         option["yAxis"]["axisLine"] = {"lineStyle": {"color": "white"}}
         option["xAxis"]["axisLine"] = {"lineStyle": {"color": "white"}}
@@ -288,7 +293,8 @@ class GraphsCompare:
 
             # Set plot labels and title
             title = f"Average {NUM_TO_STR[ranks[0]]}-{NUM_TO_STR[ranks[1]]} ranked players \nsimilarity vs round"
-            ylabel = f"Average {NUM_TO_STR[ranks[0]]}-{NUM_TO_STR[ranks[1]]} ranked players similarity"
+            # ylabel = f"Average {NUM_TO_STR[ranks[0]]}-{NUM_TO_STR[ranks[1]]} ranked players similarity"
+            ylabel = "Similarity between the two highest ranked documents"
 
             # Save plot
             subfolder_path = os.path.join(self.__output_folder, subfolder)
@@ -330,10 +336,10 @@ class GraphsCompare:
 
                 # Set plot labels and title
                 if metric == MEAN_METRIC:
-                    ylabel = f'Average {NUM_TO_STR[rank]}-ranked players similarity'
+                    ylabel = "Mean inter-document similarity of the winner with previous winners"
                     title = f"Average {NUM_TO_STR[rank]}-ranked players \nsimilarity vs round"
                 else:
-                    ylabel = f'Diameter {NUM_TO_STR[rank]}-ranked players similarity'
+                    ylabel = "Min inter-document similarity of the winner with previous winners"
                     title = f"Diameter {NUM_TO_STR[rank]}-ranked players \nsimilarity vs round"
 
                 # Save plot

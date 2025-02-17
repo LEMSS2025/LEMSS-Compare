@@ -4,7 +4,8 @@ import os
 from graphs_compare import GraphsCompare
 from rank_comparison import RankComparison
 from report_table_comparison import ReportTableComparison
-from constants.constants import OUTPUTS_DIR, GRAPH_COMPARISON_FOLDER_NAME
+from constants.constants import OUTPUTS_DIR
+
 
 class ExperimentComparison:
     """

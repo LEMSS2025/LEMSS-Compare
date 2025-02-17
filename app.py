@@ -1,13 +1,14 @@
+from pathlib import Path
+import json
+from typing import Dict
+import os
+
+from streamlit_echarts import st_echarts
+import plotly.express as px
+import plotly.graph_objects as go
 import streamlit as st
 import pandas as pd
 import numpy as np
-from pathlib import Path
-import plotly.express as px
-import plotly.graph_objects as go
-import json
-from streamlit_echarts import st_echarts
-from typing import Dict
-import os
 
 from experiment_comparison import ExperimentComparison
 from constants.constants import GRAPH_COMPARISON_FOLDER_NAME, REPORT_TABLE_COMPARISON_FILE_NAME
@@ -335,7 +336,7 @@ def display_graphs(output_dir: Path) -> None:
             )
 
             # Add details about the graph
-            st.markdown(f"TESTTTTTT")
+            # st.markdown(f"TESTTTTTT")
 
             # Find the corresponding JSON file
             selected_file = next((file for file, name in zip(files, graph_names) if name == selected_graph), None)
@@ -346,6 +347,10 @@ def display_graphs(output_dir: Path) -> None:
                     img_path = str(selected_file).replace('.json', '.png')
                     # Optionally remove or customize the title within the chart
                     option.pop('title', None)  # Remove internal title if not needed
+
+                    # yAxis = option['yAxis']
+                    # yAxis['offset'] = -40
+
                     # Render the chart using st_echarts
                     with st.spinner(f'Loading {selected_graph}...'):
                         st_echarts(options=option, height="600px")

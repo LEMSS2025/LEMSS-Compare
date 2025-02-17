@@ -10,6 +10,8 @@ RANK_CHANGE_ANALYSIS_FILE_NAME = "rank_change_analysis.csv"
 TRANSITION_PROBABILITIES_ANALYSIS_FILE_NAME = "transition_probabilities_analysis.csv"
 REPORT_TABLE_COMPARISON_FILE_NAME = "final_report_table.csv"
 
+ANNOTATION_DF = "all_relevance_quality.csv"
+
 COMPETITION_HISTORY_PILOT_FILE_NAME = "competition_history_pivot.csv"
 SETTING_PLOT_FIRST_SECOND_DISTANCE_OVER_TIME = "plot_first_second_similarity_over_time"
 SETTING_PLOT_RANK_DIAMETER_AND_AVERAGE_OVER_TIME = "plot_rank_diameter_and_average_over_time"
@@ -52,25 +54,25 @@ AVERAGE_AND_DIAMETER_OF_PLAYER_DOCUMENTS_FILE_NAME = "player_documents.png"
 AVERAGE_SIMILARITY_OF_PLAYER_DOCUMENTS_CONSECUTIVE_ROUND_FILE_NAME = "average_similarity_consecutive_rounds.png"
 DIAMETER_AND_AVERAGE_OVER_TIME = "over_time.png"
 
-Y_LABEL_CONSECUTIVE_WINNER_SIMILARITY_OVER_TIME = "Average similarity between consecutive winners"
+Y_LABEL_CONSECUTIVE_WINNER_SIMILARITY_OVER_TIME = "Similarity of winners' consecutive documents"
 TITLE_CONSECUTIVE_WINNER_SIMILARITY_OVER_TIME = "Average similarity between \nconsecutive winners vs round"
 
-Y_LABEL_AVERAGE_UNIQUE_DOCUMENTS = "Average number of unique documents"
+Y_LABEL_AVERAGE_UNIQUE_DOCUMENTS = "Number of unique documents in a ranked list"
 TITLE_LABEL_AVERAGE_UNIQUE_DOCUMENTS = "Average number of unique documents vs round"
 
-Y_LABEL_MEAN_AVERAGE_AND_DIAMETER_OF_PLAYER_DOCUMENTS = "Average similarity of player documents"
+Y_LABEL_MEAN_AVERAGE_AND_DIAMETER_OF_PLAYER_DOCUMENTS = "Mean inter-document similarity of a players' documents"
 TITLE_LABEL_MEAN_AVERAGE_AND_DIAMETER_OF_PLAYER_DOCUMENTS = "Average similarity of player documents vs round"
 
-Y_LABEL_MIN_AVERAGE_AND_DIAMETER_OF_PLAYER_DOCUMENTS = "Diameter similarity of player documents"
+Y_LABEL_MIN_AVERAGE_AND_DIAMETER_OF_PLAYER_DOCUMENTS = "Min inter-document similarity of a players' documents"
 TITLE_LABEL_MIN_AVERAGE_AND_DIAMETER_OF_PLAYER_DOCUMENTS = "Diameter similarity of player documents vs round"
 
-Y_LABEL_AVERAGE_SIMILARITY_OF_PLAYER_DOCUMENTS_CONSECUTIVE_ROUNDS = "Average similarity of \nplayer documents between consecutive rounds"
+Y_LABEL_AVERAGE_SIMILARITY_OF_PLAYER_DOCUMENTS_CONSECUTIVE_ROUNDS = "Similarity of players' consecutive documents"
 TITLE_LABEL_AVERAGE_SIMILARITY_OF_PLAYER_DOCUMENTS_CONSECUTIVE_ROUNDS = "Average similarity of \nplayer documents vs consecutive rounds"
 
-Y_LABEL_MEAN_DIAMETER_AND_AVERAGE_OVER_TIME = "Average group similarity"
+Y_LABEL_MEAN_DIAMETER_AND_AVERAGE_OVER_TIME = "Mean inter-document similarity in a ranked list"
 TITLE_LABEL_MEAN_DIAMETER_AND_AVERAGE_OVER_TIME = "Average group similarity vs round"
 
-Y_LABEL_MIN_DIAMETER_AND_AVERAGE_OVER_TIME = "Diameter group similarity"
+Y_LABEL_MIN_DIAMETER_AND_AVERAGE_OVER_TIME = "Min inter-document similarity in a ranked list"
 TITLE_LABEL_MIN_DIAMETER_AND_AVERAGE_OVER_TIME = "Diameter group similarity vs round"
 
 FINAL_TABLE_EXPERIMENT_COLUMN = "experiment"
